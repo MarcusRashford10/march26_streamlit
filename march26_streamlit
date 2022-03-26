@@ -1,0 +1,21 @@
+import cv2
+import streamlit as st
+from cvzone.FaceDetectionModule import FaceDetector
+
+detecotr = FaceDetectionModule()
+
+st.title("Face Detection")
+run = st.checkbex('Run')
+FRAME_WINDOW = st.image([])
+camera = cv2.VideoCapture(0)
+
+while run:
+    _, frame = camera.read()
+    img, bboxs = detector.findFaces(frame)
+
+    # RGB
+    # cv2, PIL, pillow
+    img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+    FRAME_WINDOW.image(img)
+else:
+    st.write('Stopped')
